@@ -32,8 +32,9 @@ case "$1" in
         sudo nano /etc/cloudflared/config.yml
         ;;
     update)
-        echo "pulling ./local/bash/cfd from github KillerOfPie/linux-shorties"
-        wget -O "$SOURCE_DIR/cfd" https://raw.githubusercontent.com/KillerOfPie/linux-shorties/master/.local/bash/cfd
+        echo "pulling ./local/bin/cfd from github KillerOfPie/linux-shorties"
+        touch "$SOURCE_DIR/cfd"
+        wget -O "$SOURCE_DIR/cfd" https://raw.githubusercontent.com/KillerOfPie/linux-shorties/master/.local/bin/cfd
         chmod +x "$SOURCE_DIR/cfd"
         ;;
     *|help)
