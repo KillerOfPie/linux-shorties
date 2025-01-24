@@ -40,8 +40,8 @@ case "$1" in
         ;;
     *|help)
         echo "Usage: $0 {start|stop|restart|status|log|edit|update}"
-        echo
-        echo
+        echo " "
+        echo " "
         echo "start: start the cloudflared service"
         echo "stop: stop the cloudflared service"
         echo "restart: restart the cloudflared service"
