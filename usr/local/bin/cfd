@@ -39,7 +39,9 @@ case "$1" in
         sudo chmod +x "/$index"
         ;;
     *|help)
-        echo "Usage: $0 {start|stop|restart|status|log|edit|update}\n"
+        echo "Usage: $0 {start|stop|restart|status|log|edit|update}"
+        echo
+        echo
         echo "start: start the cloudflared service"
         echo "stop: stop the cloudflared service"
         echo "restart: restart the cloudflared service"
