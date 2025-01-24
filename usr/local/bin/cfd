@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SOURCE_DIR=$( dirname -- "$( readlink -f -- "$0"; )"; )" # get the directory of the script
+SOURCE_DIR=$( dirname -- "$( readlink -f -- "$0"; )"; ) # get the directory of the script
 
 case "$1" in
     status||service)
@@ -32,10 +32,10 @@ case "$1" in
         sudo nano /etc/cloudflared/config.yml
         ;;
     update)
-        echo "pulling ./local/bin/cfd from github KillerOfPie/linux-shorties"
-        touch "$SOURCE_DIR/cfd"
-        wget -O "$SOURCE_DIR/cfd" https://raw.githubusercontent.com/KillerOfPie/linux-shorties/master/.local/bin/cfd
-        chmod +x "$SOURCE_DIR/cfd"
+        index=$(curl https://raw.githubusercontent.com/KillerOfPie/linux-shorties/master/index/cfd)
+        echo "pulling /$index from github KillerOfPie/linux-shorties"
+        sudo wget -O "/$index" https://raw.githubusercontent.com/KillerOfPie/linux-shorties/master/$index
+        sudo chmod +x "/$index"
         ;;
     *|help)
         echo "Usage: $0 {start|stop|restart|status}"
