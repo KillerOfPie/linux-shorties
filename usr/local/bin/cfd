@@ -7,18 +7,22 @@ case "$1" in
     status|service)
         echo "running || sudo systemctl status cloudflared ||"
         sudo systemctl status cloudflared
+        exit 1
         ;;
     stop)
         echo "running || sudo systemctl stop cloudflared ||"
         sudo systemctl stop cloudflared
+        exit 1
         ;;
     restart)
         echo "running || sudo systemctl restart cloudflared ||"
         sudo systemctl restart cloudflared
+        exit 1
         ;;
     start)
         echo "running || sudo systemctl start cloudflared ||"
         sudo systemctl start cloudflared
+        exit 1
         ;;
     log)
         echo "running || sudo journalctl --catalog --lines=($2|100) --unit=cloudflared.service ||"
@@ -27,20 +31,24 @@ case "$1" in
             lines=100
         fi
         sudo journalctl --catalog --lines="$lines" --unit=cloudflared.service
+        exit 1
         ;;
     edit)
         echo "running || sudo nano /etc/cloudflared/config.yml ||"
         sudo nano /etc/cloudflared/config.yml
+        exit 1
         ;;
     hosts)
         echo "running || sudo nano /etc/hosts ||"
         sudo nano /etc/hosts
+        exit 1
         ;;
     update)
         index=$(curl https://raw.githubusercontent.com/KillerOfPie/linux-shorties/master/index/cfd)
         echo "pulling /$index from github KillerOfPie/linux-shorties"
         sudo wget -O "/$index" "https://raw.githubusercontent.com/KillerOfPie/linux-shorties/master/$index"
         sudo chmod +x "/$index"
+        exit 1
         ;;
     *|help)
         echo "Usage: $0 {start|stop|restart|status|log|edit|update|hosts}"
