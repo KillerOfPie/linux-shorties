@@ -43,6 +43,12 @@ case "$1" in
         sudo nano /etc/hosts
         exit 1
         ;;
+    sysctl)
+        echo "running || sudo nano /etc/sysctl.conf ||"
+        sudo nano /etc/sysctl.conf
+        sudo sysctl --system
+        exit 1
+        ;;
     update)
         index=$(curl https://raw.githubusercontent.com/KillerOfPie/linux-shorties/master/index/cfd)
         echo "pulling /$index from github KillerOfPie/linux-shorties"
@@ -51,7 +57,7 @@ case "$1" in
         exit 1
         ;;
     *|help)
-        echo "Usage: $0 {start|stop|restart|status|log|edit|update|hosts}"
+        echo "Usage: $0 {start|stop|restart|status|log|edit|update|hosts|sysctl}"
         echo " "
         echo " "
         echo "start: start the cloudflared service"
@@ -62,6 +68,9 @@ case "$1" in
         echo "edit: edit the cloudflared config file"
         echo "update: update this script"
         echo "hosts: edit the hosts file"
+        echo "sysctl: edit the sysctl file"
+        echo " "
+        echo " "
         exit 1
         ;;
 esac
