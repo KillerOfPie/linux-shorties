@@ -32,6 +32,10 @@ case "$1" in
         echo "running || sudo nano /etc/cloudflared/config.yml ||"
         sudo nano /etc/cloudflared/config.yml
         ;;
+    hosts)
+        echo "running || sudo nano /etc/hosts ||"
+        sudo nano /etc/hosts
+        ;;
     update)
         index=$(curl https://raw.githubusercontent.com/KillerOfPie/linux-shorties/master/index/cfd)
         echo "pulling /$index from github KillerOfPie/linux-shorties"
@@ -39,7 +43,7 @@ case "$1" in
         sudo chmod +x "/$index"
         ;;
     *|help)
-        echo "Usage: $0 {start|stop|restart|status|log|edit|update}"
+        echo "Usage: $0 {start|stop|restart|status|log|edit|update|hosts}"
         echo " "
         echo " "
         echo "start: start the cloudflared service"
@@ -49,6 +53,7 @@ case "$1" in
         echo "log [lines]: show the log of the cloudflared service"
         echo "edit: edit the cloudflared config file"
         echo "update: update this script"
+        echo "hosts: edit the hosts file"
         exit 1
         ;;
 esac
